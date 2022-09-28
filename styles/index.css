@@ -1,0 +1,14 @@
+@import url(https://fonts.googleapis.com/css?family=Space+Mono:regular,italic,700,700italic);
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  transition: all 0.1s;
+}
+body {
+  font-family: "Space Mono";
+}
+li {
+  list-style: none;
+}
