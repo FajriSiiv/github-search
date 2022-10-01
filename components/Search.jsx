@@ -28,11 +28,13 @@ const Search = ({ dark }) => {
             setLoading(false);
           }, 2000);
         })
-        .catch((err) => setUser(err))
+        .catch((err) => {
+          setLoading(false);
+          setUser(err);
+        })
     );
     setUsername("");
   };
-
   return (
     <>
       <div className="py-3 px-3">
@@ -43,7 +45,7 @@ const Search = ({ dark }) => {
           }`}
         >
           <input
-            className={`px-2 bg-transparent focus-visible:outline-none py-2 ${
+            className={`px-2 w-[200px] bg-transparent focus-visible:outline-none py-2 md:w-full ${
               dark ? "" : "placeholder:text-[#1F2A48]"
             }`}
             type="text"
@@ -53,11 +55,11 @@ const Search = ({ dark }) => {
           />
           <button
             type="submit"
-            className={` p-2 rounded-lg ${
+            className={` p-2 m-1 rounded-lg font-bold tracking-wider md:px-4  ${
               dark ? "bg-[#0079FE]" : "bg-sky-500 text-white"
             }`}
           >
-            Submit
+            Search
           </button>
         </form>
       </div>

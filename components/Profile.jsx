@@ -1,3 +1,4 @@
+import Error from "./Error";
 import GetProfile from "./GetProfile";
 import LoadingProfile from "./LoadingProfile";
 
@@ -5,28 +6,29 @@ const Profile = ({ user, loading, dark }) => {
   var moment = require("moment");
   const date = new Date(user.created_at);
   const resultDate = moment(date).format("LL");
+
   function GetUser() {
     if (loading) {
       return loading && <LoadingProfile />;
-    } else if (user) {
+    } else if (user.id) {
       return (
-        user && (
-          <GetProfile
-            img={user.avatar_url}
-            name={user.name}
-            email={user.email}
-            createAt={resultDate}
-            bio={user.bio}
-            publicRepos={user.public_repos}
-            followers={user.followers}
-            following={user.following}
-            location={user.location}
-            blog={user.blog}
-            twitUser={user.twitter_username}
-            company={user.company}
-          />
-        )
+        <GetProfile
+          img={user.avatar_url}
+          name={user.name}
+          email={user.email}
+          createAt={resultDate}
+          bio={user.bio}
+          publicRepos={user.public_repos}
+          followers={user.followers}
+          following={user.following}
+          location={user.location}
+          blog={user.blog}
+          twitUser={user.twitter_username}
+          company={user.company}
+        />
       );
+    } else if (user.message) {
+      return <Error error={user.message} />;
     }
   }
   return (

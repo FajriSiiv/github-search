@@ -23,13 +23,16 @@ export default function Home() {
     >
       <Head>
         <title>Github Profile</title>
-        <meta desc="Search github profile" />
+        <meta name="description" content="Github Profile Search" />
       </Head>
-      <div className="h-[100vh] max-h-[600px] flex justify-center flex-col">
+      <div className="h-[100vh] max-h-[600px] flex justify-center flex-col md:w-3/4 md:mx-auto md:max-h-[100vh]">
         <div className="max-h-[100px] px-3 py-5">
           <div className="flex justify-between items-center">
             <h1 className="text-2xl font-bold">devfajri</h1>
-            <p className="uppercase tracking-[5px]" onClick={darkModes}>
+            <p
+              className="uppercase tracking-[5px] cursor-pointer focus:bg-transparent"
+              onClick={darkModes}
+            >
               {darkMode ? "dark" : "light"}
             </p>
           </div>
